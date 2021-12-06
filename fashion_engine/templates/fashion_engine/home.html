@@ -1,0 +1,65 @@
+{% extends "fashion_engine/base.html" %}
+
+{% block content %}
+
+<section class="bg-dark my-5 py-5">
+        <article class="py-5 text-center text-white">
+                <h1 class="display-3">Select the desired Image and Hit Recommendations button</h1>
+        </article>
+</section>
+
+
+
+<form action="{% url 'output' %}">
+
+    
+        <!-- <label for="items">Choose an Algorithm:</label>
+
+
+<select name="items">
+  <option value="item-1">BOW</option>
+  <option value="item-2"selected="selected">TFIDF</option>
+  <option value="item-3">Item 3</option>
+  <option value="item-4">Item 4</option>
+</select> -->
+        
+<div class="container">
+        <div class="row">
+                {% for img,idx,title,brand,color,price in context1 %}
+
+                        <div class="col-lg-3 col-md-3 col-12 my-5">
+                                <div class="card">
+                                        <img class="card-img-top" src={{ img }} alt="Card image" width="100px" height="400px">
+                                        <div class="card-body">
+                                        <input type="radio" id="scale" name = "scale" value="{{idx}}" >
+                                      
+                                        <p class="card-text text-capitalize py-0">
+                                                <span><b>{{brand}}</b></span><br>
+                                                <span style="color:rgb(80, 73, 73);font-size:12px;"> {{title}}</span><br>
+                                                <span class="text-muted">{{color}}</span><br>
+                                                <span class="text-muted"><b>{{price}}</b></span>
+                                               
+                                        </p>
+                        
+                                        </div>
+                                </div>
+
+                        </div>
+                {% endfor %}
+
+        </div>
+
+</div>
+
+
+        <div class="text-center">
+        <button type="submit" class="btn btn-primary">Check Recommendations</button>
+        </div>
+</form>
+<br>
+
+
+{% endblock %}
+    
+
+

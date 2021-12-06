@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
+dj-database-url = "*"
+whitenoise = "*"
+numpy = "*"
+pandas = "*"
+sklearn = "*"
+scipy = "*"
+pillow = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8.8"

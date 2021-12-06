@@ -1,0 +1,110 @@
+<h2>TFIDF Results </h2>
+<br>
+
+{% for img in img_url_tfidf %}
+
+<img src={{ img }} width="180px" height="250px" />
+
+{% endfor %}
+
+,'img_url_tfidf':result_url_tfidf}
+
+
+
+<img src={{q_img }} alt="Cheetah!" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<label>Choose an Image:</label><br><br><br><br><br><br><br>  
+{% for i in images %}
+
+<img src={{ i }} width="180px" height="250px" />
+
+
+{% endfor %}
+
+
+
+{% for j in idx_img %}
+<form  method="GET">
+    <label for="team_name">Image {{ j }} </label>
+    <input id="team_name" type="text" name="name_field" value="{{ j }}">
+    <input type="submit" value="OK">
+</form>
+{% endfor %}
+<br>
+
+<br>
+
+<!-- adding new data -->
+
+<h2>Query Image </h2>
+    
+
+<img src={{q_img }} alt="Cheetah!" />
+
+
+<h2>BOW Results </h2>
+<br>
+
+{% for img in img_url_bow %}
+
+<img src={{ img }} width="180px" height="250px" />
+
+{% endfor %}
+============================================
+
+<form method="post" action="{% url 'output' %}">{% csrf_token %}
+    {% for img in img_url_bow %}
+
+    <img src={{ img }} width="180px" height="250px" />
+
+    {% endfor %}
+
+
+<div class="form-group">
+    <label for="text">Image 1</label>
+    <input name="cylinderVal" type="text" value="{{temp.cylinders}}" class="form-control" placeholder="how many cylinders your car have?" >
+  </div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+
+{%  if scoreval  %}
+<h1>Mileage of the vehicle is {{scoreval}} kml</h1>
+
+{% endif %}
+=============================
+
+
+{% for img,idx in context1 %}
+
+        
+<label for="text"><img src={{ img }} width="180px" height="250px" /></label>
+<input name="{{ idx }}" type="text" value="{{ idx }}" class="form-control" >
+<button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+
+{% endfor %}
+
+
+
+{%  if scoreval  %}
+<h1>Mileage of the vehicle is {{scoreval}} kml</h1>
+
+{% endif %}

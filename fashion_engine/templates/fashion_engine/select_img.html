@@ -1,0 +1,144 @@
+{% extends "fashion_engine/base.html" %}
+
+{% block content %}
+<section class="bg-dark my-3 py-3">
+    <article class="py-5 text-center text-white">
+            <h1 class="display-3">Query Image</h1>
+    </article>
+</section>
+
+
+<div class="container-fluid">
+
+
+<div class="row">
+
+
+    <div class="col-lg-2 col-md-2 col-12  my-5 pl-5">
+        <div class="card">
+                <img class="card-img-top" src={{  query_img_context.query_img }} alt="Card image" width="50px" height="300px" class="img-fluid">
+                <div class="card-body">
+                
+             </div>
+        </div>
+
+    </div>
+    <div class="col-lg-9 col-md-9 col-12 my-5">
+        <p class="card-text text-capitalize py-0">
+            <h3 class='display-4'><b>Brand: {{query_img_context.query_img_brand}}</b></h3><br>
+            <span style="color:rgb(80, 73, 73);font-size:30px;"> <b>Title:</b> <small class="text-capitalize">{{query_img_context.query_img_title}}</small></span><br>
+            <span style="color:rgb(80, 73, 73);font-size:30px;">Color: {{query_img_context.query_img_color}}</span><br>
+            <span style="color:rgb(80, 73, 73);font-size:30px;"><b> Price: {{query_img_context.query_img_price}}</b></span>
+        </p>
+
+    </div>
+   
+</div>
+</div>
+
+<section class="bg-dark my-3 py-3">
+    <article class="py-5 text-center text-white">
+            <h1 class="display-3">Recommendations for you </h1>
+    </article>
+</section>
+
+
+<div class="container-fluid">
+
+
+    <h4 class ="display-4 text-center px-5">Using CNN </h4>
+    <hr class="w-25 mx-auto">
+    
+    
+        <div class="row">
+        {% for  i,title,color,brand,euc in img_cnn %}
+            <div class="col-lg-2 col-md-2 col-12 my-5">
+            <div class="card">
+            <img class="card-img-top" src={{ i }} alt="Card image" width="150px" height="400px">
+            <div class="card-body">
+                <p class="card-text text-capitalize py-0">
+                    <span><b>{{brand}}</b></span><br>
+                    <span style="color:rgb(80, 73, 73);font-size:12px;"> {{title}}</span><br>
+                    <span class="text-muted">{{color}}</span><br>
+                    <span class="text-muted"><b>Eucliden distance: {{euc}}</b></span>
+                
+            </p>
+            </div>
+            </div>
+            </div>
+        {% endfor %}
+        </div>
+</div>
+
+
+
+
+
+<div class="container-fluid">
+
+
+<h4 class ="display-4 text-center px-5">Using Bag of Words </h4>
+<hr class="w-25 mx-auto">
+
+
+    <div class="row">
+    {% for i,title,color,brand,euc in img_bow %}
+        <div class="col-lg-2 col-md-2 col-12 my-5">
+        <div class="card">
+        <img class="card-img-top" src={{ i }} alt="Card image" width="150px" height="400px">
+        <div class="card-body">
+            <p class="card-text text-capitalize py-0">
+                <span><b>{{brand}}</b></span><br>
+                <span style="color:rgb(80, 73, 73);font-size:12px;"> {{title}}</span><br>
+                <span class="text-muted">{{color}}</span><br>
+                <span class="text-muted"><b>Eucliden distance: {{euc}}</b></span>
+               
+        </p>
+        </div>
+        </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="container-fluid">
+    
+
+    <h4 class ="display-4 text-center px-5"> Using TFIDF </h4>
+    <hr class="w-25 mx-auto">
+    
+    
+        <div class="row">
+        {% for  i,title,color,brand,euc in img_tfidf %}
+            <div class="col-lg-2 col-md-2 col-12 my-5">
+            <div class="card">
+            <img class="card-img-top" src={{ i }} alt="Card image" width="150px" height="400px">
+            <div class="card-body">
+                <p class="card-text text-capitalize py-0">
+                    <span><b>{{brand}}</b></span><br>
+                    <span style="color:rgb(80, 73, 73);font-size:12px;"> {{title}}</span><br>
+                    <span class="text-muted">{{color}}</span><br>
+                    <span class="text-muted"><b>Eucliden distance: {{euc}}</b></span>
+                   
+            </p>
+            </div>
+            </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+    <div class="text-center">
+        <a href="{% url 'home' %}"><button type="submit" class="btn btn-primary">Recommendations for another image</button></a>
+        </div>
+
+
+
+
+{% endblock %}
