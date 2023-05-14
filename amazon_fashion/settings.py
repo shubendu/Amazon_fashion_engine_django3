@@ -26,7 +26,7 @@ SECRET_KEY = 't@#99x-8p*4ip14+@vxf$1ng*y_-c4=&(0kaqow^(jo!95b(@j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['vast-meadow-34038.herokuapp.com']
+ALLOWED_HOSTS = ['vast-meadow-34038.herokuapp.com','127.0.0.1']
 
 
 # Application definition
